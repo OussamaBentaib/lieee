@@ -12,9 +12,6 @@ export default function Cursor() {
       cursor.current.style.opacity = 0;
     }
   };
-  useEffect(() => {
-    onMouseMoveEv();
-  }, [mouse]);
   const onMouseMoveEv = () => {
     if (cursor) {
       gsap.to(cursor.current, {
@@ -26,6 +23,11 @@ export default function Cursor() {
       });
     }
   };
+  useEffect(() => {
+    onMouseMoveEv();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mouse]);
+
   return (
     <svg
       className="cursor"
